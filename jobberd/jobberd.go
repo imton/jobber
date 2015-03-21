@@ -4,11 +4,11 @@ import (
     "os"
     "os/signal"
     "syscall"
-    "log/syslog"
+    "fmt"
 )
 
-var g_logger, _ = syslog.NewLogger(syslog.LOG_NOTICE | syslog.LOG_CRON, 0)
-var g_err_logger, _ = syslog.NewLogger(syslog.LOG_ERR | syslog.LOG_CRON, 0)
+var g_logger, _ = fmt
+var g_err_logger, _ = fmt
 
 func stopServerOnSignal(server *IpcServer, jm *JobManager) {
     // Set up channel on which to send signal notifications.
