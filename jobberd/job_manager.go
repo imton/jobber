@@ -3,7 +3,6 @@ package main
 import (
     "time"
     "log"
-    "log/syslog"
     "fmt"
     "strings"
     "sort"
@@ -68,11 +67,11 @@ type JobManager struct {
 func NewJobManager() (*JobManager, error) {
     var err error
     jm := JobManager{Shell: "/bin/sh"}
-    Logger, err = syslog.NewLogger(syslog.LOG_NOTICE | syslog.LOG_CRON, 0)
+    Logger = fmt
     if err != nil {
         return nil, &JobberError{What: "Couldn't make Syslog logger.", Cause: err}
     }
-    ErrLogger, err = syslog.NewLogger(syslog.LOG_ERR | syslog.LOG_CRON, 0)
+    ErrLogger = fmt
     if err != nil {
         return nil, &JobberError{What: "Couldn't make Syslog logger.", Cause: err}
     }
